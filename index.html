@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyHouses - Choose Your Character</title>
+    <title>MyHouses - Chat Character Selection</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="selection-screen">
-        <h1 class="title">Choose Your Character</h1>
-        <p class="subtitle">Select a hero to begin your adventure</p>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>MyHouses Game</h1>
+            <p>Select your character by chatting with them</p>
+        </div>
         
-        <div class="characters-container">
-            <div class="character-card" data-character="engineer">
-                <img src="engineer.jpg" alt="Engineer" class="character-image">
-                <h3 class="character-name">Engineer</h3>
-                <p class="character-description">Master of technology and gadgets</p>
-            </div>
-            
-            <div class="character-card" data-character="hipster">
-                <img src="hipster.jpg" alt="Hipster" class="character-image">
-                <h3 class="character-name">Hipster</h3>
-                <p class="character-description">Style and music enthusiast</p>
-            </div>
-            
-            <div class="character-card" data-character="shadow">
-                <img src="shadow.jpg" alt="Shadow" class="character-image">
-                <h3 class="character-name">Shadow</h3>
-                <p class="character-description">Silent assassin and spy</p>
-            </div>
-            
-            <div class="character-card" data-character="speedster">
-                <img src="speedster.jpg" alt="Speedster" class="character-image">
-                <h3 class="character-name">Speedster</h3>
-                <p class="character-description">Blazing fast and agile fighter</p>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message system">
+                <div class="message-content">Welcome to MyHouses! Which hero would you like to play as? Click on a character to chat with them.</div>
             </div>
         </div>
         
-        <button id="start-btn" class="start-button" disabled>Start Game</button>
+        <div class="characters-chat">
+            <div class="character-option" data-character="engineer" data-name="Engineer">
+                <img src="engineer.jpg" alt="Engineer" class="character-avatar">
+                <span class="character-label">Engineer</span>
+            </div>
+            
+            <div class="character-option" data-character="hipster" data-name="Hipster">
+                <img src="hipster.jpg" alt="Hipster" class="character-avatar">
+                <span class="character-label">Hipster</span>
+            </div>
+            
+            <div class="character-option" data-character="shadow" data-name="Shadow">
+                <img src="shadow.jpg" alt="Shadow" class="character-avatar">
+                <span class="character-label">Shadow</span>
+            </div>
+            
+            <div class="character-option" data-character="speedster" data-name="Speedster">
+                <img src="speedster.jpg" alt="Speedster" class="character-avatar">
+                <span class="character-label">Speedster</span>
+            </div>
+        </div>
+        
+        <button id="start-btn" class="start-button" disabled>Start Game with Selected Character</button>
     </div>
     
     <script src="script.js"></script>

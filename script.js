@@ -1,36 +1,53 @@
-// Character Selection Logic
 document.addEventListener('DOMContentLoaded', () => {
-    const characterCards = document.querySelectorAll('.character-card');
+    const characterOptions = document.querySelectorAll('.character-option');
     const startButton = document.getElementById('start-btn');
+    const chatMessages = document.getElementById('chat-messages');
     let selectedCharacter = null;
 
-    characterCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Remove selected class from all cards
-            characterCards.forEach(c => c.classList.remove('selected'));
+    const characterGreetings = {
+        engineer: "Hey there! I can build anything you need. Choose me and we'll create something amazing with my gadgets!",
+        hipster: "Yo! Music and style are my weapons. Pick me if you want the most stylish adventure ever!",
+        shadow: "...psst. Need someone who moves in silence? I'm your ghost. No one will see us coming.",
+        speedster: "ZOOOM! Whoa, sorry I'm always too fast. Pick me and we'll finish this game in record time! ⚡"
+    };
+
+    characterOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove selected class from all
+            characterOptions.forEach(o => o.classList.remove('selected'));
             
-            // Add selected class to clicked card
-            card.classList.add('selected');
+            // Add selected class to clicked
+            option.classList.add('selected');
             
             // Store selected character
-            selectedCharacter = card.getAttribute('data-character');
+            selectedCharacter = option.getAttribute('data-character');
+            const characterName = option.getAttribute('data-name');
+            
+            // Add character greeting to chat
+            const greeting = characterGreetings[selectedCharacter] || 'Hello, choose me!';
+            
+            chatMessages.innerHTML = `
+                <div class="message system">
+                    <div class="message-content">Welcome to MyHouses! Which hero would you like to play as? Click on a character to chat with them.</div>
+                </div>
+                <div class="message">
+                    <img src="${option.querySelector('img').src}" alt="${characterName}" style="width:35px;height:35px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+                    <div class="message-content" style="background:rgba(0,255,136,0.15);color:#00ff88;border-radius:10px 10px 10px 0;">
+                        <strong>${characterName}:</strong> ${greeting}
+                    </div>
+                </div>
+            `;
             
             // Enable start button
             startButton.disabled = false;
-            startButton.textContent = `Start as ${card.querySelector('.character-name').textContent}`;
+            startButton.textContent = `Start Game as ${characterName}`;
         });
     });
 
     startButton.addEventListener('click', () => {
         if (selectedCharacter) {
-            // Store selected character in localStorage
             localStorage.setItem('selectedCharacter', selectedCharacter);
-            
-            // For now, show alert - you can replace this with actual game transition
             alert(`Game starting with: ${selectedCharacter}\n\n(You can add game logic here!)`);
-            
-            // Future: redirect to game page
-            // window.location.href = 'game.html';
         }
     });
 });
