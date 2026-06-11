@@ -6,143 +6,140 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: #0a0a1a;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    background-image: 
+        radial-gradient(ellipse at top left, rgba(233,69,96,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(0,255,136,0.08) 0%, transparent 50%);
 }
 
-.chat-container {
-    width: 90%;
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 30px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.game-container {
+    width: 95%;
+    max-width: 1000px;
+    padding: 40px 30px;
 }
 
-.chat-header {
+.game-header {
     text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 40px;
 }
 
-.chat-header h1 {
-    font-size: 2.5rem;
-    color: #e94560;
-    text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
-    margin-bottom: 8px;
-}
-
-.chat-header p {
-    font-size: 1rem;
-    color: #888;
-}
-
-.chat-messages {
-    margin-bottom: 30px;
-    max-height: 250px;
-    overflow-y: auto;
-}
-
-.message {
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.message.system .message-content {
-    background: rgba(255, 255, 255, 0.08);
-    color: #ccc;
-    border-radius: 15px;
-    padding: 12px 18px;
-    font-size: 0.95rem;
-    max-width: 80%;
-}
-
-.characters-chat {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.character-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.character-option:hover {
-    transform: translateY(-8px) scale(1.03);
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #e94560;
-    box-shadow: 0 12px 25px rgba(233, 69, 96, 0.3);
-}
-
-.character-option.selected {
-    border-color: #00ff88;
-    background: rgba(0, 255, 136, 0.1);
-    box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
-    transform: scale(1.05);
-}
-
-.character-avatar {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 12px;
+.game-header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(233,69,96,0.4);
     margin-bottom: 10px;
 }
 
-.character-label {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
+.subtitle {
+    color: #888;
+    font-size: 1.2rem;
 }
 
-.start-button {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    font-size: 1.2rem;
-    background: linear-gradient(45deg, #e94560, #ff6b6b);
-    border: none;
-    border-radius: 30px;
-    color: #fff;
+.character-select {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.character-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+    padding: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: bold;
+    border: 3px solid transparent;
+    text-align: center;
 }
 
-.start-button:hover:not(:disabled) {
+.character-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(233,69,96,0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.character-card.selected {
+    border-color: #00ff88;
+    background: rgba(0,255,136,0.08);
+    box-shadow: 0 0 30px rgba(0,255,136,0.3);
+    transform: scale(1.04);
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background: #111;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    padding: 5px 0;
+}
+
+.selected-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.selected-info p {
+    color: #00ff88;
+    font-size: 1.1rem;
+    min-height: 24px;
+}
+
+.start-btn {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 18px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    background: linear-gradient(135deg, #e94560, #c23152);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff5a7a, #e94560);
+    box-shadow: 0 0 40px rgba(233,69,96,0.5);
     transform: scale(1.02);
-    box-shadow: 0 0 30px rgba(233, 69, 96, 0.6);
 }
 
-.start-button:disabled {
-    background: #555;
+.start-btn:disabled {
+    background: #333;
+    color: #666;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-    color: #999;
 }
 
 @media (max-width: 768px) {
-    .characters-chat {
+    .character-select {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .chat-header h1 {
-        font-size: 2rem;
+    .game-header h1 {
+        font-size: 2.5rem;
     }
 }
